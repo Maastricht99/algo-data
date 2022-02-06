@@ -25,6 +25,3 @@ function quickSort(arr, start = 0, end = arr.length - 1) {
   return arr;
 }
 
-
-
-console.log(quickSort([11, 3,2,1,4,5, 9]));
