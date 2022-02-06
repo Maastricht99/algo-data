@@ -11,7 +11,7 @@ class SinglyLinkedList {
     this.head = null;
     this.length = 0;
   }
-  addToHead(value) {
+  addNodeToHead(value) {
     const currentHead = this.head;
     const newHead = new Node(value);
     if (!currentHead) {
@@ -24,7 +24,7 @@ class SinglyLinkedList {
     this.length++;
     return;
   }
-  removeFromHead() {
+  removeNodeFromHead() {
     const currentHead = this.head;
     if (!currentHead) {
       return;
@@ -40,7 +40,7 @@ class SinglyLinkedList {
     this.length--;
     return;
   }
-  addToTail(value) {
+  addNodeToTail(value) {
     const newTail = new Node(value);
     let currentNode = this.head;
     if (!currentNode) {
@@ -55,7 +55,7 @@ class SinglyLinkedList {
     this.length++;
     return;
   }
-  removeFromTail() {
+  removeNodeFromTail() {
     let currentNode = this.head;
     if (!currentNode) {
       return;
@@ -71,7 +71,75 @@ class SinglyLinkedList {
     this.length--;
     return;
   }
-  contains(value) {
+  addNodeByIndex(value, index){
+    if (index > this.length) {
+      return;
+    }
+    if (index === 0) {
+      this.addNodeToHead(value);
+      return;
+    }
+    if (index === this.length) {
+      this.addNodeToTail(value);
+      return;
+    }
+    let currentNode = this.head;
+    let counter = 0;
+    while (counter < index - 1) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    const newNode = new Node(value);
+    newNode.next = currentNode.next;
+    currentNode.next = newNode;
+    this.length++;
+    return;
+  }
+  removeNodeByIndex(index) {
+    if (index > this.length - 1) {
+      return;
+    }
+    if (index === 0) {
+      this.removeNodeFromHead();
+      return;
+    }
+    if (index === this.length - 1){
+      this.removeNodeFromTail();
+      return;
+    }
+    let currentNode = this.head;
+    let counter = 0;
+    while (counter < index - 1) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    currentNode.next = currentNode.next.next;
+    this.length--;
+    return;
+  }
+  removeNodeByValue(value) {
+    if (!this.containsValue(value)) {
+      return;
+    }
+    let currentNode = this.head;
+    if (!currentNode) {
+      return;
+    }
+    if (currentNode.value === value) {
+      this.removeNodeFromHead();
+      return;
+    }
+    while (currentNode.next) {
+      if (currentNode.next.value === value) {
+        currentNode.next = currentNode.next.next;
+        this.length--;
+        return;
+      }
+      currentNode = currentNode.next;
+    }
+    return;
+  }
+  containsValue(value) {
     let currentNode = this.head;
     while (currentNode) {
       if (currentNode.value === value) {
@@ -89,3 +157,6 @@ class SinglyLinkedList {
     }
   }
 }
+
+
+
