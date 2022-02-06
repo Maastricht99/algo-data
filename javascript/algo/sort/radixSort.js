@@ -33,3 +33,16 @@ function mostDigits(arr) {
   return highestCount;
 }
 
+function radixSort(arr) {
+  const highestCount = mostDigits(arr);
+  for (let i = 0; i < highestCount; i++) {
+    const buckets = Array.from({ length: 10 }, () => []);
+    for (let j = 0; j < arr.length; j++) {
+      const digit = getDigit(arr[j], i);
+      buckets[digit].push(arr[j]); 
+    }
+    arr = [].concat(...buckets);
+  }
+  return arr;
+}
+
