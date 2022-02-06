@@ -11,9 +11,9 @@ class SinglyLinkedList {
     this.head = null;
     this.length = 0;
   }
-  addToHead(node) {
+  addToHead(value) {
     const currentHead = this.head;
-    const newHead = node;
+    const newHead = new Node(value);
     if (!currentHead) {
       this.head = newHead;
       this.length++;
@@ -40,8 +40,8 @@ class SinglyLinkedList {
     this.length--;
     return;
   }
-  addToTail(node) {
-    const newTail = node;
+  addToTail(value) {
+    const newTail = new Node(value);
     let currentNode = this.head;
     if (!currentNode) {
       this.head = newTail;
@@ -83,7 +83,7 @@ class SinglyLinkedList {
   }
   printList() {
     let currentNode = this.head;
-    while (currentNode.next) {
+    while (currentNode) {
       console.log(`Val: ${currentNode.value}`);
       currentNode = currentNode.next;
     }
