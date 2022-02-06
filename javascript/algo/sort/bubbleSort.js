@@ -16,8 +16,8 @@ function bubbleSort(arr) {
 
 // Less efficient if the array is nearly sorted
 function bubbleSort2(arr) {
-  for (let i = arr.length - 1; i >= 0; i--) {
-    for (let j = 0; j <= i - 1; j++) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - i; j++) {
       if (arr[j] > arr[j + 1]) {
         const temp = arr[j];
         arr[j] = arr[j + 1];
@@ -27,3 +27,4 @@ function bubbleSort2(arr) {
   }
   return arr;
 }
+
