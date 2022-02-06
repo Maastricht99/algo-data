@@ -149,6 +149,26 @@ class SinglyLinkedList {
     }
     return false;
   }
+  reverseList() {
+    if (this.length <= 1) {
+      return;
+    }
+    let currentNode = this.head;
+    let newHead = this.head;
+    while (newHead.next) {
+      newHead = newHead.next
+    }
+    this.head = newHead;
+    let prevNode = null;
+    let nextNode = null;
+    while (currentNode) {
+      nextNode = currentNode.next;
+      currentNode.next = prevNode;
+      prevNode = currentNode;
+      currentNode = nextNode;
+    }
+    return;
+  }
   printList() {
     let currentNode = this.head;
     while (currentNode) {
@@ -157,6 +177,5 @@ class SinglyLinkedList {
     }
   }
 }
-
 
 
