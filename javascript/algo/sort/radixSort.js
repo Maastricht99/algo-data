@@ -20,3 +20,16 @@ function digitCountFormula(number) {
   return Math.floor(Math.log10(Math.abs(number))) + 1;
 }
 
+function mostDigits(arr) {
+  if (!arr.length) {
+    return 0;
+  }
+  let highestCount = digitCount(arr[0]);
+  for (let i = 1; i < arr.length; i++) {
+    if(digitCount(arr[i]) > highestCount) {
+      highestCount = digitCount(arr[i]);
+    }
+  }
+  return highestCount;
+}
+
