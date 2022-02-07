@@ -154,11 +154,6 @@ class SinglyLinkedList {
       return;
     }
     let currentNode = this.head;
-    let newHead = this.head;
-    while (newHead.next) {
-      newHead = newHead.next
-    }
-    this.head = newHead;
     let prevNode = null;
     let nextNode = null;
     while (currentNode) {
@@ -167,6 +162,7 @@ class SinglyLinkedList {
       prevNode = currentNode;
       currentNode = nextNode;
     }
+    this.head = prevNode;
     return;
   }
   printList() {
@@ -177,5 +173,4 @@ class SinglyLinkedList {
     }
   }
 }
-
 
