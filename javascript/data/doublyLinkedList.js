@@ -124,6 +124,48 @@ class DoublyLinkedList {
       return;
     }
   }
+  removeNodeByIndex(index) {
+    if (index > this.length) {
+      return;
+    }
+    if (index === 0) {
+      this.removeNodeFromHead();
+      return;
+    }
+    if (index === this.length - 1) {
+      this.removeNodeFromTail();
+      return;
+    }
+    let currentNode;
+    let counter;
+    if (index <= this.length / 2) {
+      currentNode = this.head;
+      counter = 0;
+      while (counter < index) {
+        currentNode = currentNode.next;
+        counter++;
+      }
+      const prevNode = currentNode.previous;
+      const nextNode = currentNode.next;
+      prevNode.next = nextNode;
+      nextNode.previous = prevNode;
+      this.length--;
+      return;
+    } else {
+      currentNode = this.tail;
+      counter = this.length - 1;
+      while (counter > index) {
+        currentNode = currentNode.previous;
+        counter--;
+      }
+      const prevNode = currentNode.previous;
+      const nextNode = currentNode.next;
+      prevNode.next = nextNode;
+      nextNode.previous = prevNode;
+      this.length--;
+      return;
+    }
+  }
   printListHeadToTail() {
     let currentNode = this.head;
     while (currentNode) {
@@ -145,6 +187,8 @@ class DoublyLinkedList {
     }
   }
 }
+
+
 
 
 
