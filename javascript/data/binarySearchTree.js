@@ -18,6 +18,9 @@ class BinarySearchTree {
       return;
     }
     while (currentNode) {
+      if (newNode.value === currentNode.value) {
+        return
+      }
       if (newNode.value > currentNode.value) {
         if (!currentNode.right) {
           currentNode.right = newNode;
