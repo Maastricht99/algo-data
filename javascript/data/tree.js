@@ -37,7 +37,20 @@ class Tree {
     }
     return visited;
   }
+  DFTRecursive() {
+    let currentNode = this;
+    const visited = [];
+    function traverse(node) {
+      visited.push(node.value);
+      for (let i = 0; i < node.children.length; i++) {
+        traverse(node.children[i]);
+      }
+    }
+    traverse(currentNode);
+    return visited;
+  }
 }
+
 
 
 
