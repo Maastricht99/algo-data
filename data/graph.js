@@ -20,6 +20,15 @@ class Graph {
       delete this.adjacencyList[vertex];
     }
   }
+  removeVertex2(vertex) {
+    if (this.adjacencyList[vertex]) {
+      while (this.adjacencyList[vertex].length) {
+        const vertex2 = this.adjacencyList[vertex].pop();
+        this.removeEdge(vertex, vertex2);
+      }
+    }
+    delete this.adjacencyList[vertex];
+  }
   addEdge(vertex1, vertex2) {
     if (this.adjacencyList[vertex1] && this.adjacencyList[vertex2]) {
       this.adjacencyList[vertex1].push(vertex2);
