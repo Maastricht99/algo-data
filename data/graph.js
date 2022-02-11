@@ -47,5 +47,40 @@ class Graph {
       }
     }
   }
+  depthFirstTraverse(vertex1) {
+    const result = [];
+    const visited = {};
+    const stack = [vertex1];
+    while (stack.length) {
+      const vertex = stack.pop();
+      if (!visited[vertex]) {
+        result.push(vertex);
+        visited[vertex] = true;
+        for (let i = 0; i < this.adjacencyList[vertex].length; i++) {
+          const adjacentVertex = this.adjacencyList[vertex][i];
+          stack.push(adjacentVertex);
+        }
+      }
+    }
+    return result;
+  }
+  breadthFirstTraverse(vertex1) {
+    const result = [];
+    const visited = {};
+    const queue = [vertex1];
+    while (queue.length) {
+      const vertex = stack.shift();
+      if (!visited[vertex]) {
+        result.push(vertex);
+        visited[vertex] = true;
+        for (let i = 0; i < this.adjacencyList[vertex].length; i++) {
+          const adjacentVertex = this.adjacencyList[vertex][i];
+          queue.push(adjacentVertex);
+        }
+      }
+    }
+    return result;
+  }
 }
+
 
