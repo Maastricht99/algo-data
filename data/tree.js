@@ -15,6 +15,19 @@ class Tree {
       }
     }
   }
+  depthFirstTraverse() {
+    let currentNode = this;
+    const stack = [currentNode];
+    const visited = [];
+    while (stack.length) {
+      currentNode = stack.shift();
+      visited.push(currentNode.value);
+      for (let i = 0; i < currentNode.children.length; i++) {
+        stack.unshift(currentNode.children[i]);
+      }
+    }
+    return visited;
+  }
   breadthFirstTraverse() {
     let currentNode = this;
     const queue = [currentNode];
@@ -22,31 +35,10 @@ class Tree {
     while (queue.length) {
       currentNode = queue.shift();
       visited.push(currentNode.value);
-      queue.push(...currentNode.children);
-    }
-    return visited;
-  }
-  depthFirstTraverse() {
-    let currentNode = this;
-    const queue = [currentNode];
-    const visited = [];
-    while (queue.length) {
-      currentNode = queue.shift();
-      visited.push(currentNode.value);
-      queue.unshift(...currentNode.children);
-    }
-    return visited;
-  }
-  DFTRecursive() {
-    let currentNode = this;
-    const visited = [];
-    function traverse(node) {
-      visited.push(node.value);
-      for (let i = 0; i < node.children.length; i++) {
-        traverse(node.children[i]);
+      for (let i = 0; i < currentNode.children.length; i++) {
+        queue.push(currentNode.children[i]);
       }
     }
-    traverse(currentNode);
     return visited;
   }
 }
